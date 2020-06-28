@@ -25,14 +25,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void displayResult (Double res){
-        TextView ans = (TextView) findViewById(R.id.showResult);{
+            String answer;
             Intent intent = new Intent(this, ShowResultActivity.class);
-            String message = res.toString();
+            answer = new DecimalFormat("#.###").format(res);
+            String message = answer;
             intent.putExtra(EXTRA_MESSAGE,message);
             startActivity(intent);
-            //ans.setText("" + res);
             result = 0;
-        }
     }
 
     public void divideAction(View view){
@@ -49,12 +48,15 @@ public class MainActivity extends AppCompatActivity {
             Double number1 = Double.parseDouble(n1);
             Double number2 = Double.parseDouble(n2);
             if (number2 == 0) {
-                Toast.makeText(this, "Cannot divide by 0", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(this, ShowResultActivity.class);
+                String message = "Cannot divide by 0";
+                intent.putExtra(EXTRA_MESSAGE, message);
+                startActivity(intent);
             }
             else {
                 result = number1 / number2;
+                displayResult(result);
             }
-            displayResult(result);
         }
     }
 
