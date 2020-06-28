@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void divideAction(View view){
-        TextView sign = (TextView) findViewById(R.id.showSign);
+        TextView sign = findViewById(R.id.showSign);
         sign.setText("÷");
         EditText num1 = (EditText) findViewById(R.id.firstNumber);
         EditText num2 = (EditText) findViewById(R.id.secondNumber);
